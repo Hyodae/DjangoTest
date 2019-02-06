@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+  <table border=\"1\">
+    <th> Title </th>
+    <th> Writer </th>
+    <th> Date </th>
+      {% for article in articleList %}
+      <tr>
+        <td> <a href="/view/{{article.id}}">{{ article.title }} </td>
+        <td> {{ article.name }} </td>
+        <td> {{ article.cdate|date:"D d M Y" }} </td>
+      </tr>
+      {% endfor %}
+  </table>
+</body>
+</html>
