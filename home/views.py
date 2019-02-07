@@ -8,6 +8,8 @@ import PIL.Image
 
 import io
 
+import numpy as np
+
 
 # Create your views here.
 
@@ -32,3 +34,19 @@ def showimage(request):
 
     # Send buffer in a http response the the browser with the mime type image/png set
     return HttpResponse(buffer.getvalue(), content_type="image/png")
+
+def mplimage(request):
+	# Construct the graph
+	x = np.arange(-2,1.5,.01)
+	y = np.sin(np.exp(2*x))
+	plot(x, y)
+
+	# Store image in a buffer
+	buffer = io.BytesIO()
+	canvas = pylab.get_current_fig_manager().canvas
+	canvas.draw()
+	pilImage = PIL.Image.frombytes("RGB", canvas.get_width_height(), canvas.tostring_rgb())
+	pilImage.save(buffer, "PNG")
+	pylab.close()
+
+	return HttpResponse(buffer.getvalue(), content_type="image/png")
