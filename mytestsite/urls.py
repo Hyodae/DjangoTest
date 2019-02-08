@@ -28,5 +28,6 @@ urlpatterns = [
 
     # home
     path('showimage.png/', showimage),
-    path('mplimage.png/', mplimage),    
+    path('mplimage.png/', mplimage),
+    path('customer/', customer),
 ]

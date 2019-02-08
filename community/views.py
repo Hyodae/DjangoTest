@@ -7,6 +7,9 @@ def write(request):
         form = Form(request.POST)
         if form.is_valid():
             form.save()
+            articleList = Article.objects.all()
+            return render(request, 'list.html',{'articleList':articleList})
+
     else:
         form = Form()
 
