@@ -55,7 +55,7 @@ def mplimage(request):
 import mysql.connector
 
 def customer(request):
-	cnx = mysql.connector.connect(user='root', password='password_here',
+	cnx = mysql.connector.connect(user='root', password='password-here',
                               host='emba.kr',
                               database='sample')
 

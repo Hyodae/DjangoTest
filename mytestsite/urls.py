@@ -19,15 +19,26 @@ from django.urls import path
 from community.views import *
 from home.views import *
 
+from django.conf.urls import include, url
+
+
 urlpatterns = [
-    # community
+
+    # admin
     path('admin/', admin.site.urls),
+
+    # community
     path('write/', write, name='write'),
     path('list/', list, name='list'),
     path('view/<int:num>/', view),
 
-    # home
-    path('showimage.png/', showimage),
-    path('mplimage.png/', mplimage),
-    path('customer/', customer),
+    # home : python example
+    path('showimage.png/', showimage),  # matplotlib
+    path('mplimage.png/', mplimage),    # matplotlib with numpy
+    path('customer/', customer),        # mysql
+
+    # music
+    url(r'^music/', include('music.urls')),
+
+
 ]
